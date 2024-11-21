@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   drawUtils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 17:54:01 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/21 21:35:02 by tuaydin          ###   ########.fr       */
+/*   Created: 2024/11/21 21:00:09 by tuaydin           #+#    #+#             */
+/*   Updated: 2024/11/21 21:02:47 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	main(int an, char *args[])
+void	draw_pix(t_fdf	*fdf, t_pt p)
 {
-	t_fdf	fdf;
-
-	init_map(&fdf.map);
-	init_mlx(&fdf.mlx);
-	fdf.map.parse(&fdf.map, args[1]);
-	mlx_put_image_to_window(fdf.mlx.ptr, fdf.mlx.win, fdf.mlx.img, 0, 0);
-	mlx_loop(fdf.mlx.ptr);
+	if (p.x < WIDTH && p.y < HEIGHT && p.y >= 0 && p.x >= 0)
+		fdf->mlx.img_data[(long)p.x + ((long)p.y * WIDTH)] = p.color.val;
 }

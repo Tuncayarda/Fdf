@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   terminate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 17:54:01 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/21 21:35:02 by tuaydin          ###   ########.fr       */
+/*   Created: 2024/11/21 21:04:51 by tuaydin           #+#    #+#             */
+/*   Updated: 2024/11/21 21:05:05 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	main(int an, char *args[])
+void	terminate(const char *msg)
 {
-	t_fdf	fdf;
-
-	init_map(&fdf.map);
-	init_mlx(&fdf.mlx);
-	fdf.map.parse(&fdf.map, args[1]);
-	mlx_put_image_to_window(fdf.mlx.ptr, fdf.mlx.win, fdf.mlx.img, 0, 0);
-	mlx_loop(fdf.mlx.ptr);
+	if (!msg)
+		ft_printf("Error: %s\n", strerror(errno));
+	else
+		ft_printf("Error: %s\n", msg);
+	exit(1);
 }

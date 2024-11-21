@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:51:08 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/21 20:46:59 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/21 21:14:06 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,27 @@ typedef struct	s_map
 }				t_map;
 void	init_map(t_map	*map);
 
-typedef struct	s_vars
+typedef struct	s_mlx_v
 {
-	t_map	*map;
-}				t_vars;
+	void	*ptr;
+	void	*win;
+	void	*img;
+	int		*img_data;
+	int		bpp;
+	int		size_line;
+	int		endian;
+}				t_mlx_v;
+
+typedef struct	s_fdf
+{
+	t_map	map;
+	t_mlx_v mlx;
+}				t_fdf;
 
 __uint32_t	ft_hexatoi(char *hex);
 bool		check_file(const char *path);
+void		terminate(const char *msg);
+void		init_mlx(t_mlx_v *mlx_v);
+void		draw_pix(t_fdf	*fdf, t_pt p);
 
 #endif

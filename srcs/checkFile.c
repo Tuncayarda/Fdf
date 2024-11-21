@@ -6,20 +6,11 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:39:33 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/21 20:45:44 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/21 21:05:04 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	terminate(const char *msg)
-{
-	if (!msg)
-		ft_printf("Error: %s\n", strerror(errno));
-	else
-		ft_printf("Error: %s\n", msg);
-	exit(1);
-}
 
 static char	**get_trim_arr(int fd)
 {

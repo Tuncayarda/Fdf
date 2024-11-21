@@ -1,0 +1,16 @@
+[submodule "libs/minilibx-linux"]
+	path = libs/minilibx-linux
+	url = https://github.com/42Paris/minilibx-linux
+	branch = master
+[submodule "libs/libft"]
+	path = libs/libft
+	url = https://github.com/Tuncayarda/42_Libft
+	branch = main
+[submodule "libs/get_next_line"]
+	path = libs/get_next_line
+	url = https://github.com/Tuncayarda/42_Get_next_line
+	branch = main
+[submodule "libs/ft_printf"]
+	path = libs/ft_printf
+	url = https://github.com/Tuncayarda/42_ft_printf.git
+	branch = main

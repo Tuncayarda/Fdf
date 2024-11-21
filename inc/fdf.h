@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:51:08 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/21 21:14:06 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/21 21:39:20 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef	struct	s_resizable_arr
 	size_t	type_size;
 	size_t	max_count;
 	void	*data;
+
 	bool	(*init)(struct	s_resizable_arr	*arr, size_t type_size);
 	bool	(*insert)(struct	s_resizable_arr	*arr, void *var);
 	bool	(*free)(struct	s_resizable_arr	*arr);
@@ -70,6 +71,10 @@ typedef struct	s_map
 {
 	size_t	width;
 	size_t	height;
+
+	float	angle_x;
+	float	angle_y;
+	float	angle_z;
 	t_pt	*pts;
 
 	bool	(*parse)(struct s_map *map, const char *path);

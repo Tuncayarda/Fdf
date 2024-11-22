@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:15:38 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/21 20:49:11 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/22 17:58:20 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ bool	free_arr(t_resizable_arr	*arr)
 {
 	if (arr != NULL && arr->data != NULL)
 		free(arr->data);
+	return (true);
 }

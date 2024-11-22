@@ -11,7 +11,7 @@ run: compile
 	./fdf $$dir
 
 compile_fdf:
-	@cc srcs/*.c \
+	@cc -g srcs/*.c \
 	-I./inc \
 	\
 	-I./libs/libft \

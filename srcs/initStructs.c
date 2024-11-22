@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:28:00 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/21 20:43:00 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/22 21:38:33 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,24 @@ void	init_resizable_arr(t_resizable_arr *arr)
 }
 
 bool	parser(t_map *map, const char *path);
+bool	scale_map(t_map *map);
+bool	push_map(t_map *map);
+bool	rotate_map(t_map *map);
 
 void	init_map(t_map	*map)
 {
 	map->width = 0;
 	map->height = 0;
+	map->x_offset = 0;
+	map->y_offset = 0;
+	map->angle_x = 35;
+	map->angle_y = -45;
+	map->angle_z = 0;
+	map->scale_val = SCALE;
+	map->z_div = SCALE;
+	map->proj = FREE;
 	map->parse = parser;
+	map->scale = scale_map;
+	map->push = push_map;
+	map->rotate = rotate_map;
 }

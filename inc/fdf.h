@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:51:08 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/21 21:39:20 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/22 21:27:43 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,36 @@
 # include <string.h>
 
 # define PI 3.14f
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 3000
+# define HEIGHT 2000
+# define SCALE 50.0f
+# define MIN_SCALE 5.0f
+# define MAX_SCALE 500.0f
+# define MAX_Z_DIV 100.0f
+# define MIN_Z_DIV 0.8f
 # define TITLE "FDF"
+
+typedef enum	e_projection
+{
+	ISOMETRIC,
+	DIMETRIC,
+	TRIMETRIC,
+	FREE
+}				t_projection;
+
+typedef enum 	e_line_elems
+{
+	DX,
+	DY,
+	HIP,
+	STEP,
+	R,
+	G,
+	B,
+	R_STEP,
+	G_STEP,
+	B_STEP,
+}				t_line_elems;
 
 typedef	struct	s_resizable_arr
 {
@@ -40,7 +67,6 @@ typedef	struct	s_resizable_arr
 	size_t	type_size;
 	size_t	max_count;
 	void	*data;
-
 	bool	(*init)(struct	s_resizable_arr	*arr, size_t type_size);
 	bool	(*insert)(struct	s_resizable_arr	*arr, void *var);
 	bool	(*free)(struct	s_resizable_arr	*arr);
@@ -69,15 +95,21 @@ typedef	struct	s_point
 
 typedef struct	s_map
 {
-	size_t	width;
-	size_t	height;
-
-	float	angle_x;
-	float	angle_y;
-	float	angle_z;
-	t_pt	*pts;
-
-	bool	(*parse)(struct s_map *map, const char *path);
+	size_t			width;
+	size_t			height;
+	long			x_offset;
+	long			y_offset;
+	float			scale_val;
+	float			z_div;
+	float			angle_x;
+	float			angle_y;
+	float			angle_z;
+	t_pt			*pts;
+	t_projection	proj;
+	bool			(*parse)(struct s_map *map, const char *path);
+	bool			(*scale)(struct s_map *map);
+	bool			(*push)(struct s_map *map);
+	bool			(*rotate)(struct s_map *map);
 }				t_map;
 void	init_map(t_map	*map);
 
@@ -102,6 +134,10 @@ __uint32_t	ft_hexatoi(char *hex);
 bool		check_file(const char *path);
 void		terminate(const char *msg);
 void		init_mlx(t_mlx_v *mlx_v);
-void		draw_pix(t_fdf	*fdf, t_pt p);
+void		draw_line(t_fdf *fdf, t_pt p1, t_pt p2);
+bool		draw_map(t_fdf *fdf, t_map map);
+t_map		conf_map(t_map *map);
+int			handle_keys(int keycode, t_fdf *fdf);
+void		fill_map(t_fdf	*fdf, int color);
 
 #endif

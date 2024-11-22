@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 18:19:45 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/22 21:42:21 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/23 00:05:15 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ void	set_angles(t_map *map)
 		map->angle_y = 30;
 		map->angle_z = 60;
 	}
-}
-
-float	degto_rad(float angle)
-{
-	return (angle * (PI / 180));
 }
 
 bool	scale_map(t_map *map)
@@ -78,8 +73,8 @@ bool	rotate_map(t_map *map)
 	float	matrix[4][4];
 
 	set_angles(map);
-	init_rot_matrix(matrix, degto_rad(map->angle_x),
-		degto_rad(map->angle_y), degto_rad(map->angle_z));
+	init_rot_matrix(matrix, map->angle_x * RAD,
+		map->angle_y * RAD, map->angle_z * RAD);
 	i = 0;
 	while (i < map->width * map->height)
 	{

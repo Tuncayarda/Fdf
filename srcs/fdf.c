@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:54:01 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/22 21:40:27 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/23 00:11:39 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	init_hooks(t_fdf *fdf)
 {
 	mlx_hook(fdf->mlx.win, 2, (1L << 0), handle_keys, fdf);
+	mlx_hook(fdf->mlx.win, 17, 0, close_window, fdf);
 }
 
 int	main(int an, char *args[])
@@ -22,7 +23,7 @@ int	main(int an, char *args[])
 	t_fdf	fdf;
 
 	if (an != 2)
-		terminate("Wrong File Entry!!!\n");
+		terminate("Wrong File Entry!!!");
 	init_map(&fdf.map);
 	init_mlx(&fdf.mlx);
 	init_hooks(&fdf);

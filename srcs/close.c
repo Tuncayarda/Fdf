@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawMap.c                                          :+:      :+:    :+:   */
+/*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 21:54:17 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/22 23:45:58 by tuaydin          ###   ########.fr       */
+/*   Created: 2024/11/22 23:54:59 by tuaydin           #+#    #+#             */
+/*   Updated: 2024/11/22 23:58:05 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-bool	draw_map(t_fdf *fdf, t_map map)
+int	close_window(t_fdf *fdf)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < map.width * map.height)
-	{
-		if ((i + 1) % map.width != 0)
-			draw_line(fdf, map.pts[i], map.pts[i + 1]);
-		if (i < map.width * map.height - map.width)
-			draw_line(fdf, map.pts[i], map.pts[i + map.width]);
-		i++;
-	}
-	return (true);
+	free(fdf->map.pts);
+	mlx_destroy_image(fdf->mlx.ptr, fdf->mlx.img);
+	mlx_destroy_window(fdf->mlx.ptr, fdf->mlx.win);
+	free(fdf->mlx.ptr);
+	exit(0);
 }

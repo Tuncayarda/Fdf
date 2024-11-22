@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 20:00:15 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/22 21:42:47 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/22 23:51:06 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@ void	handle_proj_keys(int keycode, t_fdf *fdf)
 	if (keycode == XK_3)
 		fdf->map.proj = TRIMETRIC;
 	if (keycode == XK_0)
-		fdf->map.proj = FREE;
+	{
+		fdf->map.proj = O_FREE;
+		fdf->map.angle_x = 45;
+		fdf->map.angle_y = 45;
+		fdf->map.angle_z = 0;
+	}
 }
 
 void	handle_scale_keys(int keycode, t_fdf *fdf)
@@ -38,29 +43,29 @@ void	handle_scale_keys(int keycode, t_fdf *fdf)
 
 void	handle_push_keys(int keycode, t_fdf *fdf)
 {
-	if (keycode == XK_Up)
+	if (keycode == XK_Up && fdf->map.proj == O_FREE)
 		fdf->map.y_offset -= 100;
-	if (keycode == XK_Down)
+	if (keycode == XK_Down && fdf->map.proj == O_FREE)
 		fdf->map.y_offset += 100;
-	if (keycode == XK_Right)
+	if (keycode == XK_Right && fdf->map.proj == O_FREE)
 		fdf->map.x_offset += 100;
-	if (keycode == XK_Left)
+	if (keycode == XK_Left && fdf->map.proj == O_FREE)
 		fdf->map.x_offset -= 100;
 }
 
 void	handle_rot_keys(int keycode, t_fdf *fdf)
 {
-	if (keycode == XK_q)
+	if (keycode == XK_q && fdf->map.proj == O_FREE)
 		fdf->map.angle_z -= 5;
-	if (keycode == XK_e)
+	if (keycode == XK_e && fdf->map.proj == O_FREE)
 		fdf->map.angle_z += 5;
-	if (keycode == XK_w)
+	if (keycode == XK_w && fdf->map.proj == O_FREE)
 		fdf->map.angle_x += 5;
-	if (keycode == XK_s)
+	if (keycode == XK_s && fdf->map.proj == O_FREE)
 		fdf->map.angle_x -= 5;
-	if (keycode == XK_a)
+	if (keycode == XK_a && fdf->map.proj == O_FREE)
 		fdf->map.angle_y -= 5;
-	if (keycode == XK_d)
+	if (keycode == XK_d && fdf->map.proj == O_FREE)
 		fdf->map.angle_y += 5;
 }
 

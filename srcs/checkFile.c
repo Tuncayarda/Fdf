@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:39:33 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/21 21:05:04 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/23 00:11:49 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,15 @@ bool	check_file(const char *path)
 {
 	int	fd;
 
-	ft_printf("Opening file...\n");
+	ft_printf("Checking file name...\n");
+	if (ft_strchr(path, '.'))
+	{
+		if (ft_strncmp(ft_strchr(path, '.'), ".fdf", 5) != 0)
+			terminate("Wrong file extension!!!");
+	}
+	else
+		terminate("Wrong file extension!!!\n");
+	ft_printf("Opening file %s\n", path);
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		terminate(NULL);

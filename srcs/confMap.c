@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 23:45:33 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 00:12:41 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/23 01:23:05 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_map	copy_map(t_map *map)
 	rtn.push = map->push;
 	rtn.rotate = map->rotate;
 	rtn.proj = map->proj;
+	rtn.clr_prof = map->clr_prof;
 	return (rtn);
 }
 
@@ -53,7 +54,5 @@ t_map	conf_ortho_map(t_map *map)
 
 t_map	conf_map(t_map *map)
 {
-	if (map->proj == ISOMETRIC || map->proj == DIMETRIC
-		|| map->proj == TRIMETRIC || map->proj == O_FREE)
-		return (conf_ortho_map(map));
+	return (conf_ortho_map(map));
 }

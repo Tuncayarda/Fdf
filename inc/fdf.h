@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:51:08 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 00:01:22 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/23 01:21:21 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@
 # define MAX_SCALE 500.0f
 # define MAX_Z_DIV 100.0f
 # define MIN_Z_DIV 0.8f
+# define MENU_WIDTH 180
+# define MENU_HEIGHT 400
 # define TITLE "FDF"
 
 typedef enum	e_projection
@@ -47,6 +49,12 @@ typedef enum	e_projection
 	TRIMETRIC,
 	O_FREE
 }				t_projection;
+
+typedef enum	e_color_profile
+{
+	NONE,
+	TERRAIN
+}				t_color_profile;
 
 typedef enum 	e_line_elems
 {
@@ -107,6 +115,7 @@ typedef struct	s_map
 	float			angle_z;
 	t_pt			*pts;
 	t_projection	proj;
+	t_color_profile	clr_prof;
 	bool			(*parse)(struct s_map *map, const char *path);
 	bool			(*scale)(struct s_map *map);
 	bool			(*push)(struct s_map *map);
@@ -140,5 +149,7 @@ bool		draw_map(t_fdf *fdf, t_map map);
 t_map		conf_map(t_map *map);
 int			handle_keys(int keycode, t_fdf *fdf);
 void		fill_map(t_fdf	*fdf, int color);
-int		close_window(t_fdf *fdf);
+int			close_window(t_fdf *fdf);
+void		update_menu(t_fdf *fdf);
+void		set_angles(t_map *map);
 #endif

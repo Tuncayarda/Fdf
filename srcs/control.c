@@ -6,13 +6,13 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 20:00:15 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/22 23:51:06 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/23 01:24:04 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	handle_proj_keys(int keycode, t_fdf *fdf)
+static void	handle_prof_keys(int keycode, t_fdf *fdf)
 {
 	if (keycode == XK_1)
 		fdf->map.proj = ISOMETRIC;
@@ -24,12 +24,17 @@ void	handle_proj_keys(int keycode, t_fdf *fdf)
 	{
 		fdf->map.proj = O_FREE;
 		fdf->map.angle_x = 45;
-		fdf->map.angle_y = 45;
+		fdf->map.angle_y = -45;
 		fdf->map.angle_z = 0;
 	}
+	if (keycode == XK_n)
+		fdf->map.clr_prof = NONE;
+	if (keycode == XK_t)
+		fdf->map.clr_prof = TERRAIN;
+	set_angles(&fdf->map);
 }
 
-void	handle_scale_keys(int keycode, t_fdf *fdf)
+static void	handle_scale_keys(int keycode, t_fdf *fdf)
 {
 	if (keycode == XK_z && fdf->map.scale_val * 1.2 <= MAX_SCALE)
 		fdf->map.scale_val *= 1.2;
@@ -41,7 +46,7 @@ void	handle_scale_keys(int keycode, t_fdf *fdf)
 		fdf->map.z_div *= 0.5;
 }
 
-void	handle_push_keys(int keycode, t_fdf *fdf)
+static void	handle_push_keys(int keycode, t_fdf *fdf)
 {
 	if (keycode == XK_Up && fdf->map.proj == O_FREE)
 		fdf->map.y_offset -= 100;
@@ -53,19 +58,19 @@ void	handle_push_keys(int keycode, t_fdf *fdf)
 		fdf->map.x_offset -= 100;
 }
 
-void	handle_rot_keys(int keycode, t_fdf *fdf)
+static void	handle_rot_keys(int keycode, t_fdf *fdf)
 {
-	if (keycode == XK_q && fdf->map.proj == O_FREE)
+	if (keycode == XK_q && fdf->map.proj == O_FREE && fdf->map.angle_z > -360)
 		fdf->map.angle_z -= 5;
-	if (keycode == XK_e && fdf->map.proj == O_FREE)
+	if (keycode == XK_e && fdf->map.proj == O_FREE && fdf->map.angle_z < 360)
 		fdf->map.angle_z += 5;
-	if (keycode == XK_w && fdf->map.proj == O_FREE)
+	if (keycode == XK_w && fdf->map.proj == O_FREE && fdf->map.angle_x < 360)
 		fdf->map.angle_x += 5;
-	if (keycode == XK_s && fdf->map.proj == O_FREE)
+	if (keycode == XK_s && fdf->map.proj == O_FREE && fdf->map.angle_x > -360)
 		fdf->map.angle_x -= 5;
-	if (keycode == XK_a && fdf->map.proj == O_FREE)
+	if (keycode == XK_a && fdf->map.proj == O_FREE && fdf->map.angle_y > -360)
 		fdf->map.angle_y -= 5;
-	if (keycode == XK_d && fdf->map.proj == O_FREE)
+	if (keycode == XK_d && fdf->map.proj == O_FREE && fdf->map.angle_y < 360)
 		fdf->map.angle_y += 5;
 }
 
@@ -78,10 +83,11 @@ int	handle_keys(int keycode, t_fdf *fdf)
 	handle_push_keys(keycode, fdf);
 	handle_rot_keys(keycode, fdf);
 	handle_scale_keys(keycode, fdf);
-	handle_proj_keys(keycode, fdf);
+	handle_prof_keys(keycode, fdf);
 	fill_map(fdf, EIGENGRAU);
 	rtn = conf_map(&fdf->map);
 	draw_map(fdf, rtn);
 	free(rtn.pts);
 	mlx_put_image_to_window(fdf->mlx.ptr, fdf->mlx.win, fdf->mlx.img, 0, 0);
+	update_menu(fdf);
 }

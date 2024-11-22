@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 18:19:45 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/22 21:35:33 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/22 21:42:21 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	set_angles(t_map *map)
 
 float	degto_rad(float angle)
 {
-	return (angle * (PI / 180));	
+	return (angle * (PI / 180));
 }
 
 bool	scale_map(t_map *map)
@@ -84,9 +84,9 @@ bool	rotate_map(t_map *map)
 	while (i < map->width * map->height)
 	{
 		x_new = matrix[0][0] * map->pts[i].x + matrix[0][1]
-		* map->pts[i].y + matrix[0][2] * map->pts[i].z + matrix[0][3];
+			* map->pts[i].y + matrix[0][2] * map->pts[i].z + matrix[0][3];
 		y_new = matrix[1][0] * map->pts[i].x + matrix[1][1]
-		* map->pts[i].y + matrix[1][2] * map->pts[i].z + matrix[1][3];
+			* map->pts[i].y + matrix[1][2] * map->pts[i].z + matrix[1][3];
 		map->pts[i].x = x_new;
 		map->pts[i].y = y_new;
 		i++;

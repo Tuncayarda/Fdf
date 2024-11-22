@@ -6,13 +6,13 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 20:00:15 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/22 21:37:04 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/22 21:42:47 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void handle_proj_keys(int keycode, t_fdf *fdf)
+void	handle_proj_keys(int keycode, t_fdf *fdf)
 {
 	if (keycode == XK_1)
 		fdf->map.proj = ISOMETRIC;
@@ -24,7 +24,7 @@ void handle_proj_keys(int keycode, t_fdf *fdf)
 		fdf->map.proj = FREE;
 }
 
-void handle_scale_keys(int keycode, t_fdf *fdf)
+void	handle_scale_keys(int keycode, t_fdf *fdf)
 {
 	if (keycode == XK_z && fdf->map.scale_val * 1.2 <= MAX_SCALE)
 		fdf->map.scale_val *= 1.2;
@@ -36,7 +36,7 @@ void handle_scale_keys(int keycode, t_fdf *fdf)
 		fdf->map.z_div *= 0.5;
 }
 
-void handle_push_keys(int keycode, t_fdf *fdf)
+void	handle_push_keys(int keycode, t_fdf *fdf)
 {
 	if (keycode == XK_Up)
 		fdf->map.y_offset -= 100;
@@ -48,7 +48,7 @@ void handle_push_keys(int keycode, t_fdf *fdf)
 		fdf->map.x_offset -= 100;
 }
 
-void handle_rot_keys(int keycode, t_fdf *fdf)
+void	handle_rot_keys(int keycode, t_fdf *fdf)
 {
 	if (keycode == XK_q)
 		fdf->map.angle_z -= 5;

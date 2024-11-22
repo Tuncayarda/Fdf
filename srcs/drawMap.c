@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 21:54:17 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/22 21:39:15 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/22 21:41:20 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ bool	draw_map(t_fdf *fdf, t_map map)
 t_map	copy_map(t_map *map)
 {
 	t_map	rtn;
-	
+
 	rtn.width = map->width;
 	rtn.height = map->height;
 	rtn.scale_val = map->scale_val;

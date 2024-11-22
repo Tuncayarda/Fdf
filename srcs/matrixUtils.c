@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 19:34:12 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/22 19:34:49 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/22 21:42:33 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,3 @@ void	init_rot_matrix(float matrix[4][4], float x, float y, float z)
 	matrix[2][3] = 0;
 	matrix[3][3] = 1;
 }
-

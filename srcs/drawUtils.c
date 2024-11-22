@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 21:00:09 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/22 20:46:47 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/22 21:41:47 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	draw_line(t_fdf *fdf, t_pt p1, t_pt p2)
 	{
 		draw_pix(fdf, p1);
 		if ((long)p1.x != (long)p2.x)
-			p1.x += arr[DX] / get_high_d(arr[DX], arr[DY]);;
+			p1.x += arr[DX] / get_high_d(arr[DX], arr[DY]);
 		if ((long)p1.y != (long)p2.y)
-			p1.y += arr[DY] / get_high_d(arr[DX], arr[DY]);;
+			p1.y += arr[DY] / get_high_d(arr[DX], arr[DY]);
 		arr[R] += arr[R_STEP];
 		arr[G] += arr[G_STEP];
 		arr[B] += arr[B_STEP];

@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 20:00:15 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 01:24:04 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/23 13:03:36 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 static void	handle_prof_keys(int keycode, t_fdf *fdf)
 {
 	if (keycode == XK_1)
-		fdf->map.proj = ISOMETRIC;
+		set_proj(&fdf->map, ISOMETRIC);
 	if (keycode == XK_2)
-		fdf->map.proj = DIMETRIC;
+		set_proj(&fdf->map, DIMETRIC);
 	if (keycode == XK_3)
-		fdf->map.proj = TRIMETRIC;
+		set_proj(&fdf->map, TRIMETRIC);
 	if (keycode == XK_0)
 	{
-		fdf->map.proj = O_FREE;
 		fdf->map.angle_x = 45;
 		fdf->map.angle_y = -45;
 		fdf->map.angle_z = 0;
+		set_proj(&fdf->map, O_FREE);
 	}
 	if (keycode == XK_n)
 		fdf->map.clr_prof = NONE;
@@ -86,6 +86,8 @@ int	handle_keys(int keycode, t_fdf *fdf)
 	handle_prof_keys(keycode, fdf);
 	fill_map(fdf, EIGENGRAU);
 	rtn = conf_map(&fdf->map);
+	if (rtn.pts == NULL)
+		terminate("Allocation Fail!!!");
 	draw_map(fdf, rtn);
 	free(rtn.pts);
 	mlx_put_image_to_window(fdf->mlx.ptr, fdf->mlx.win, fdf->mlx.img, 0, 0);

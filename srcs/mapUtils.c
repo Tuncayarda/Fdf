@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 18:19:45 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 00:52:13 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/23 12:40:45 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ void	set_angles(t_map *map)
 		map->angle_y = 30;
 		map->angle_z = 60;
 	}
+}
+
+void	set_proj(t_map *map, t_projection projection)
+{
+	map->proj = projection;
+	map->x_offset = 0;
+	map->y_offset = 0;
 }
 
 bool	scale_map(t_map *map)

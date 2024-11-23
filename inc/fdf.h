@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:51:08 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 01:21:21 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/23 13:00:36 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct	s_map
 	bool			(*scale)(struct s_map *map);
 	bool			(*push)(struct s_map *map);
 	bool			(*rotate)(struct s_map *map);
+	bool			(*colorize)(struct s_map *map);
 }				t_map;
 void	init_map(t_map	*map);
 
@@ -152,4 +153,5 @@ void		fill_map(t_fdf	*fdf, int color);
 int			close_window(t_fdf *fdf);
 void		update_menu(t_fdf *fdf);
 void		set_angles(t_map *map);
+void		set_proj(t_map *map, t_projection projection);
 #endif

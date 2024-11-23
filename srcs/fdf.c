@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:54:01 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 01:10:32 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/23 12:44:18 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	main(int an, char *args[])
 	fill_map(&fdf, EIGENGRAU);
 	draw_map(&fdf, conf_map(&fdf.map));
 	mlx_put_image_to_window(fdf.mlx.ptr, fdf.mlx.win, fdf.mlx.img, 0, 0);
-
 	update_menu(&fdf);
 	mlx_loop(fdf.mlx.ptr);
 }

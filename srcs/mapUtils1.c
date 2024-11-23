@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 00:52:44 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 13:32:18 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/23 18:12:06 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,13 @@ static bool	apply_terrain(t_map *map)
 	{
 		map->pts[i].color.val = BLACK;
 		if (map->pts[i].z <= 0)
-			map->pts[i].color.b = (map->pts[i].z - min) * (150) / (-min);
+			map->pts[i].color.b = (map->pts[i].z - min) * (155) / (-min);
+		if (min > -10 && map->pts[i].z <= 0)
+			map->pts[i].color.b = 155;
 		if (map->pts[i].z > 0)
-			map->pts[i].color.val = GREEN;
+			map->pts[i].color.g = 200;
+		if (map->pts[i].z > max / 10 && max > 0)
+			map->pts[i].color.g = 140;
 		if (map->pts[i].z > max / 6 && max > 0)
 			map->pts[i].color.val = MOUNTAIN_BROWN;
 		if (map->pts[i].z > max / 2 && max > 0)

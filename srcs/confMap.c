@@ -6,13 +6,13 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 23:45:33 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 13:05:33 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/23 18:18:02 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_map	copy_map(t_map *map)
+static t_map	copy_map(t_map *map)
 {
 	t_map	rtn;
 
@@ -37,7 +37,7 @@ t_map	copy_map(t_map *map)
 	return (rtn);
 }
 
-t_map	conf_ortho_map(t_map *map)
+static t_map	conf_ortho_map(t_map *map)
 {
 	t_map	rtn;
 
@@ -56,7 +56,45 @@ t_map	conf_ortho_map(t_map *map)
 	return (rtn);
 }
 
+static void	sphere_loop(t_map *map, size_t i)
+{
+	float	lng;
+	float	lat;
+
+	lng = -(map->pts[i].x) * (PI * 2) / (map->width - 1);
+	lat = (map->pts[i].y / (float)(map->height - 1)) * PI;
+	map->pts[i].x = (map->width / (PI * 2) + map->pts[i].z
+			/ map->z_div) * cos(lng) * sin(lat);
+	map->pts[i].y = (map->width / (PI * 2) + map->pts[i].z
+			/ map->z_div) * sin(lng) * sin(lat);
+	map->pts[i].z = (map->width / (PI * 2) + map->pts[i].z
+			/ map->z_div) * cos(lat);
+}
+
+static t_map	conf_sphere_map(t_map *map)
+{
+	t_map		rtn;
+	size_t		i;
+
+	rtn = copy_map(map);
+	i = 0;
+	rtn.colorize(&rtn);
+	while (i < map->height * map->width && rtn.pts != NULL)
+	{
+		sphere_loop(&rtn, i);
+		i++;
+	}
+	rtn.rotate(&rtn);
+	rtn.scale(&rtn);
+	rtn.x_offset = (WIDTH / 2) + map->x_offset;
+	rtn.y_offset = (HEIGHT / 2) + map->y_offset;
+	rtn.push(&rtn);
+	return (rtn);
+}
+
 t_map	conf_map(t_map *map)
 {
+	if (map->proj == SPHERE)
+		return (conf_sphere_map(map));
 	return (conf_ortho_map(map));
 }

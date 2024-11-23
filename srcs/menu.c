@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 00:17:07 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 13:32:35 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/23 14:06:45 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ static void	update_profiles(t_fdf *fdf)
 	if (fdf->map.proj == TRIMETRIC)
 		mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
 			80, 180, WHITE, "TRIMETRIC");
+	if (fdf->map.proj == SPHERE)
+		mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
+			80, 180, WHITE, "SPHERE");
 	if (fdf->map.proj == O_FREE)
 		mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
 			80, 180, WHITE, "FREE");

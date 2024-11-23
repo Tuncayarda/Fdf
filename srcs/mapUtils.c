@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 18:19:45 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 12:40:45 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/23 18:10:31 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ bool	scale_map(t_map *map)
 	size_t	i;
 
 	i = 0;
+	if (map->pts == NULL)
+		return (false);
 	while (i < map->width * map->height)
 	{
 		map->pts[i].x *= map->scale_val;
@@ -63,6 +65,8 @@ bool	push_map(t_map *map)
 	size_t	i;
 
 	i = 0;
+	if (map->pts == NULL)
+		return (false);
 	while (i < map->width * map->height)
 	{
 		map->pts[i].x += map->x_offset;
@@ -79,6 +83,8 @@ bool	rotate_map(t_map *map)
 	float	y_new;
 	float	matrix[4][4];
 
+	if (map->pts == NULL)
+		return (false);
 	set_angles(map);
 	init_rot_matrix(matrix, map->angle_x * RAD,
 		map->angle_y * RAD, map->angle_z * RAD);

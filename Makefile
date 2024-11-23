@@ -4,7 +4,7 @@ std_run: compile
 	@./fdf test_maps/42.fdf
 
 test_run: compile
-	@./fdf test_maps/test.fdf
+	@./fdf test_maps/pnp_flat.fdf
 
 run: compile
 	@read -p "Enter file dir: " dir; \

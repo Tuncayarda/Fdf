@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:51:08 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 13:00:36 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/23 17:36:16 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@
 
 # define PI 3.14f
 # define RAD PI / 180
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 2200
+# define HEIGHT 1300
 # define SCALE 50.0f
-# define MIN_SCALE 3.0f
+# define MIN_SCALE 1.0f
 # define MAX_SCALE 500.0f
-# define MAX_Z_DIV 100.0f
+# define MAX_Z_DIV 500.0f
 # define MIN_Z_DIV 0.8f
 # define MENU_WIDTH 180
 # define MENU_HEIGHT 400
@@ -47,7 +47,8 @@ typedef enum	e_projection
 	ISOMETRIC,
 	DIMETRIC,
 	TRIMETRIC,
-	O_FREE
+	O_FREE,
+	SPHERE
 }				t_projection;
 
 typedef enum	e_color_profile
@@ -154,4 +155,7 @@ int			close_window(t_fdf *fdf);
 void		update_menu(t_fdf *fdf);
 void		set_angles(t_map *map);
 void		set_proj(t_map *map, t_projection projection);
+void		draw_pix(t_fdf	*fdf, t_pt p);
+bool		draw_sphere(t_fdf *fdf, t_map map);
+
 #endif

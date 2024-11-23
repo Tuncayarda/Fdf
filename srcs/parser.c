@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:12:16 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/21 20:48:24 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/23 22:09:14 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ bool	line_loop(char **pts, t_pt *pt, t_resizable_arr *arr, t_map *map)
 		pt->x = (float)x;
 		pt->y = (float)map->height;
 		pt->z = ft_atoi(pts[x]);
+		pt->is_visible = true;
 		free(pts[x]);
 		if (arr->insert(arr, pt) == false)
 			return (false);

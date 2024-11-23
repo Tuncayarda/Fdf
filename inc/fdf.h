@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:51:08 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 17:36:16 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/24 00:46:47 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@
 # define MAX_SCALE 500.0f
 # define MAX_Z_DIV 500.0f
 # define MIN_Z_DIV 0.8f
-# define MENU_WIDTH 180
-# define MENU_HEIGHT 400
 # define TITLE "FDF"
 
 typedef enum	e_projection
@@ -100,6 +98,7 @@ typedef	struct	s_point
 	float	x;
 	float	y;
 	float	z;
+	bool	is_visible;
 	t_clr	color;
 }				t_pt;
 
@@ -157,5 +156,6 @@ void		set_angles(t_map *map);
 void		set_proj(t_map *map, t_projection projection);
 void		draw_pix(t_fdf	*fdf, t_pt p);
 bool		draw_sphere(t_fdf *fdf, t_map map);
+void		set_invisibles_pos(t_map *map);
 
 #endif

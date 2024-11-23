@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 23:45:33 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 18:18:02 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/24 00:46:43 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,13 @@ static t_map	conf_sphere_map(t_map *map)
 	rtn = copy_map(map);
 	i = 0;
 	rtn.colorize(&rtn);
+	set_invisibles_pos(&rtn);
 	while (i < map->height * map->width && rtn.pts != NULL)
 	{
 		sphere_loop(&rtn, i);
 		i++;
 	}
+	i = 0;
 	rtn.rotate(&rtn);
 	rtn.scale(&rtn);
 	rtn.x_offset = (WIDTH / 2) + map->x_offset;

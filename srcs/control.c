@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 20:00:15 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 18:11:15 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/24 00:46:54 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	handle_prof_keys(int keycode, t_fdf *fdf)
 		set_proj(&fdf->map, SPHERE);
 		fdf->map.angle_x = 90;
 		fdf->map.angle_y = 0;
-		fdf->map.angle_z = 0;
+		fdf->map.angle_z = 15;
 	}
 	if (keycode == XK_0)
 	{
@@ -67,18 +67,22 @@ static void	handle_push_keys(int keycode, t_fdf *fdf)
 
 static void	handle_rot_keys(int keycode, t_fdf *fdf)
 {
-	if (keycode == XK_q && fdf->map.angle_z > -360)
+	if (keycode == XK_q && fdf->map.proj == O_FREE && fdf->map.angle_z > -360)
 		fdf->map.angle_z -= 5;
-	if (keycode == XK_e && fdf->map.angle_z < 360)
+	if (keycode == XK_e && fdf->map.proj == O_FREE && fdf->map.angle_z < 360)
 		fdf->map.angle_z += 5;
-	if (keycode == XK_w && fdf->map.angle_x < 360)
+	if (keycode == XK_w && fdf->map.proj == O_FREE && fdf->map.angle_x < 360)
 		fdf->map.angle_x += 5;
-	if (keycode == XK_s && fdf->map.angle_x > -360)
+	if (keycode == XK_s && fdf->map.proj == O_FREE && fdf->map.angle_x > -360)
 		fdf->map.angle_x -= 5;
-	if (keycode == XK_a && fdf->map.angle_y > -360)
+	if (keycode == XK_a && fdf->map.proj == O_FREE && fdf->map.angle_y > -360)
 		fdf->map.angle_y -= 5;
-	if (keycode == XK_d && fdf->map.angle_y < 360)
+	if (keycode == XK_d && fdf->map.proj == O_FREE && fdf->map.angle_y < 360)
 		fdf->map.angle_y += 5;
+	if (keycode == XK_d && fdf->map.proj == SPHERE && fdf->map.angle_y < 135)
+		fdf->map.angle_y += 45;
+	if (keycode == XK_a && fdf->map.proj == SPHERE && fdf->map.angle_y > 0)
+		fdf->map.angle_y -= 45;
 }
 
 int	handle_keys(int keycode, t_fdf *fdf)

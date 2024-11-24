@@ -53,7 +53,7 @@ $(PRINTF):
 	@make -sC libs/ft_printf
 
 $(MINILIBX):
-	@git clone https://github.com/42Paris/minilibx-linux.git libs/minilibx-linux
+	@git clone https://github.com/42Paris/minilibx-linux.git libs/minilibx-linux  
 	@make -sC libs/minilibx-linux
 
 clean:

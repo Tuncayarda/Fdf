@@ -1,12 +1,12 @@
 [submodule "libs/libft"]
 	path = libs/libft
-	url = https://github.com/Tuncayarda/42_Libft
+	url = https://github.com/Tuncayarda/Libft
 	branch = main
 [submodule "libs/get_next_line"]
 	path = libs/get_next_line
-	url = https://github.com/Tuncayarda/42_Get_next_line
+	url = https://github.com/Tuncayarda/Get_next_line
 	branch = main
 [submodule "libs/ft_printf"]
 	path = libs/ft_printf
-	url = https://github.com/Tuncayarda/42_ft_printf.git
+	url = https://github.com/Tuncayarda/ft_printf.git
 	branch = main

@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 00:17:07 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 14:06:45 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/24 20:23:32 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,45 @@
 
 static void	update_angles(t_fdf *fdf)
 {
+	char	*val;
+	val = ft_itoa((int)fdf->map.angle_x);
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
 		10, 40, ORANGE, "X ROTATION:");
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
-		80, 40, WHITE, ft_itoa((int)fdf->map.angle_x));
+		80, 40, WHITE, val);
+	free(val);
+	val = ft_itoa((int)fdf->map.angle_y);
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
 		10, 60, ORANGE, "Y ROTATION:");
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
-		80, 60, WHITE, ft_itoa((int)fdf->map.angle_y));
+		80, 60, WHITE, val);
+	free(val);
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
 		10, 80, ORANGE, "Z ROTATION:");
+	val = ft_itoa((int)fdf->map.angle_z);
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
-		80, 80, WHITE, ft_itoa((int)fdf->map.angle_z));
+		80, 80, WHITE, val);
+	free(val);
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
 		10, 100, ORANGE, "----------------------");
 }
 
 static void	update_offsets(t_fdf *fdf)
 {
+	char	*val;
+	
+	val = ft_itoa((int)fdf->map.x_offset);
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
 		10, 120, ORANGE, "X OFFSET:");
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
-		80, 120, WHITE, ft_itoa((int)fdf->map.x_offset));
+		80, 120, WHITE, val);
+	free(val);
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
 		10, 140, ORANGE, "Y OFFSET:");
+	val = ft_itoa((int)fdf->map.y_offset);
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
-		80, 140, WHITE, ft_itoa((int)fdf->map.y_offset));
+		80, 140, WHITE, val);
+	free(val);
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
 		10, 160, ORANGE, "----------------------");
 }
@@ -75,18 +88,26 @@ static void	update_profiles(t_fdf *fdf)
 
 static void	update_mapinfo(t_fdf *fdf)
 {
+	char	*val;
+
+	val = ft_itoa((int)(fdf->map.width * fdf->map.scale_val));
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
 		10, 220, ORANGE, "WIDTH:");
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
-		80, 220, WHITE, ft_itoa((int)(fdf->map.width * fdf->map.scale_val)));
+		80, 220, WHITE, val);
+	free(val);
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
 		10, 240, ORANGE, "HEIGHT:");
+	val = ft_itoa((int)(fdf->map.height * fdf->map.scale_val));
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
-		80, 240, WHITE, ft_itoa((int)(fdf->map.height * fdf->map.scale_val)));
+		80, 240, WHITE, val);
+	free(val);
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
 		10, 260, ORANGE, "POINTS:");
+	val = ft_itoa((int)(fdf->map.height * fdf->map.width));
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
-		80, 260, WHITE, ft_itoa((int)(fdf->map.height * fdf->map.width)));
+		80, 260, WHITE, val);
+	free(val);
 }
 
 void	update_menu(t_fdf *fdf)

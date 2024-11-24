@@ -57,13 +57,13 @@ $(MINILIBX):
 	@make -sC libs/minilibx-linux
 
 clean:
-	@make clean -sC libs/libft
-	@make clean -sC libs/get_next_line
-	@make clean -sC libs/ft_printf
+	@make fclean -sC libs/libft
+	@make fclean -sC libs/get_next_line
+	@make fclean -sC libs/ft_printf
 
 
 fclean: clean
-	@rm -rf $(LIBFT) $(GNL) $(PRINTF) $(NAME) libs/minilibx-linux
+	@rm -rf $(NAME) libs/minilibx-linux
 
 re: fclean all
 

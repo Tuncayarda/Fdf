@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:12:16 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 22:09:14 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/24 19:34:39 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	**get_trim_pts_line(int fd)
 	return (pts);
 }
 
-bool	line_loop(char **pts, t_pt *pt, t_resizable_arr *arr, t_map *map)
+int	line_loop(char **pts, t_pt *pt, t_resizable_arr *arr, t_map *map)
 {
 	size_t	x;
 
@@ -52,7 +52,7 @@ bool	line_loop(char **pts, t_pt *pt, t_resizable_arr *arr, t_map *map)
 	return (true);
 }
 
-bool	read_file(t_map *map, int fd)
+int	read_file(t_map *map, int fd)
 {
 	char			**pts;
 	t_resizable_arr	arr;
@@ -77,7 +77,7 @@ bool	read_file(t_map *map, int fd)
 	return (true);
 }
 
-bool	parser(t_map *map, const char *path)
+int	parser(t_map *map, const char *path)
 {
 	int	fd;
 

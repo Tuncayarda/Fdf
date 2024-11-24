@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 00:52:44 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/24 16:06:38 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/24 19:32:37 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,8 @@ static bool	apply_terrain(t_map *map)
 	return (true);
 }
 
-bool	colorize_map(t_map *map)
+int	colorize_map(t_map *map)
 {
-	float	max;
-	float	min;
-
 	if (map->clr_prof == NONE)
 		return (true);
 	if (map->clr_prof == TERRAIN)

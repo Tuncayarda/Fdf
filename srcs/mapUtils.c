@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 18:19:45 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 18:10:31 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/24 19:34:15 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	set_proj(t_map *map, t_projection projection)
 	map->y_offset = 0;
 }
 
-bool	scale_map(t_map *map)
+int	scale_map(t_map *map)
 {
 	size_t	i;
 
@@ -60,7 +60,7 @@ bool	scale_map(t_map *map)
 	return (true);
 }
 
-bool	push_map(t_map *map)
+int	push_map(t_map *map)
 {
 	size_t	i;
 
@@ -76,7 +76,7 @@ bool	push_map(t_map *map)
 	return (true);
 }
 
-bool	rotate_map(t_map *map)
+int	rotate_map(t_map *map)
 {
 	size_t	i;
 	float	x_new;

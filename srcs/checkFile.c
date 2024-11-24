@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:39:33 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 00:11:49 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/24 19:35:52 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	check_format(int fd)
 	}
 }
 
-bool	check_file(const char *path)
+int	check_file(const char *path)
 {
 	int	fd;
 

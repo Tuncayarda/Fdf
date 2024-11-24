@@ -6,13 +6,13 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 21:54:17 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 22:18:29 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/24 19:35:42 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-bool	draw_map(t_fdf *fdf, t_map map)
+int	draw_map(t_fdf *fdf, t_map map)
 {
 	size_t	i;
 

@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 21:00:09 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 18:12:26 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/24 19:32:09 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	fill_map(t_fdf	*fdf, int color)
 	{
 		while (i < WIDTH * HEIGHT)
 		{
-			fdf->mlx.img_data[i] = EIGENGRAU;
+			fdf->mlx.img_data[i] = color;
 			i++;
 		}
 	}

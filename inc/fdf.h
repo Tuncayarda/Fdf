@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:51:08 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/24 16:01:23 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/24 19:33:43 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include <string.h>
 
 # define PI 3.14f
-# define RAD PI / 180
+# define RAD 0.01745329251
 # define WIDTH 3500
 # define HEIGHT 2300
 # define SCALE 50.0f
@@ -38,7 +38,7 @@
 # define MIN_Z_DIV 0.8f
 # define TITLE "FDF"
 
-typedef enum	e_projection
+typedef enum e_projection
 {
 	ISOMETRIC,
 	DIMETRIC,
@@ -47,13 +47,13 @@ typedef enum	e_projection
 	SPHERE
 }				t_projection;
 
-typedef enum	e_color_profile
+typedef enum e_color_profile
 {
 	NONE,
 	TERRAIN
 }				t_color_profile;
 
-typedef enum 	e_line_elems
+typedef enum e_li
 {
 	DX,
 	DY,
@@ -67,21 +67,22 @@ typedef enum 	e_line_elems
 	B_STEP
 }				t_line_elems;
 
-typedef	struct	s_resizable_arr
+typedef struct s_resizable_arr
 {
 	size_t	count;
 	size_t	type_size;
 	size_t	max_count;
 	void	*data;
-	bool	(*init)(struct	s_resizable_arr	*arr, size_t type_size);
-	bool	(*insert)(struct	s_resizable_arr	*arr, void *var);
-	bool	(*free)(struct	s_resizable_arr	*arr);
+	int		(*insert)(struct s_resizable_arr (*arr), void (*var));
+	int		(*init)(struct s_resizable_arr (*arr), size_t type_size);
+	int		(*free)(struct s_resizable_arr (*arr));
 }				t_resizable_arr;
+
 void	init_resizable_arr(t_resizable_arr *arr);
 
-typedef union	u_color
+typedef union u_color
 {
-	struct 
+	struct
 	{
 		__uint8_t	b;
 		__uint8_t	g;
@@ -91,7 +92,7 @@ typedef union	u_color
 	__uint32_t		val;
 }				t_clr;
 
-typedef	struct	s_point
+typedef struct s_point
 {
 	float	x;
 	float	y;
@@ -100,7 +101,7 @@ typedef	struct	s_point
 	t_clr	color;
 }				t_pt;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	size_t			width;
 	size_t			height;
@@ -114,15 +115,15 @@ typedef struct	s_map
 	t_pt			*pts;
 	t_projection	proj;
 	t_color_profile	clr_prof;
-	bool			(*parse)(struct s_map *map, const char *path);
-	bool			(*scale)(struct s_map *map);
-	bool			(*push)(struct s_map *map);
-	bool			(*rotate)(struct s_map *map);
-	bool			(*colorize)(struct s_map *map);
-}				t_map;
+	int				(*parse)(struct s_map *map, const char *path);
+	int				(*scale)(struct s_map *map);
+	int				(*push)(struct s_map *map);
+	int				(*rotate)(struct s_map *map);
+	int				(*colorize)(struct s_map *map);
+}					t_map;
 void	init_map(t_map	*map);
 
-typedef struct	s_mlx_v
+typedef struct s_mlx_v
 {
 	void	*ptr;
 	void	*win;
@@ -133,27 +134,27 @@ typedef struct	s_mlx_v
 	int		endian;
 }				t_mlx_v;
 
-typedef struct	s_fdf
+typedef struct s_fdf
 {
 	t_map	map;
-	t_mlx_v mlx;
-}				t_fdf;
+	t_mlx_v	mlx;
+}			t_fdf;
 
-__uint32_t	ft_hexatoi(char *hex);
-bool		check_file(const char *path);
-void		terminate(const char *msg);
-void		init_mlx(t_mlx_v *mlx_v);
-void		draw_line(t_fdf *fdf, t_pt p1, t_pt p2);
-bool		draw_map(t_fdf *fdf, t_map map);
-t_map		conf_map(t_map *map);
-int			handle_keys(int keycode, t_fdf *fdf);
-void		fill_map(t_fdf	*fdf, int color);
-int			close_window(t_fdf *fdf);
-void		update_menu(t_fdf *fdf);
-void		set_angles(t_map *map);
-void		set_proj(t_map *map, t_projection projection);
-void		draw_pix(t_fdf	*fdf, t_pt p);
-bool		draw_sphere(t_fdf *fdf, t_map map);
-void		set_invisibles_pos(t_map *map);
+int		check_file(const char *path);
+void	terminate(const char *msg);
+void	init_mlx(t_mlx_v *mlx_v);
+void	draw_line(t_fdf *fdf, t_pt p1, t_pt p2);
+int		draw_map(t_fdf *fdf, t_map map);
+t_map	conf_map(t_map *map);
+int		handle_keys(int keycode, t_fdf *fdf);
+void	fill_map(t_fdf	*fdf, int color);
+int		close_window(t_fdf *fdf);
+void	update_menu(t_fdf *fdf);
+void	set_angles(t_map *map);
+void	set_proj(t_map *map, t_projection projection);
+void	draw_pix(t_fdf	*fdf, t_pt p);
+int		draw_sphere(t_fdf *fdf, t_map map);
+void	set_invisibles_pos(t_map *map);
+long	ft_hexatoi(char *hex);
 
 #endif

@@ -6,15 +6,15 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:28:00 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/23 17:36:21 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/24 19:34:05 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-bool	init_arr(t_resizable_arr	*arr, size_t type_size);
-bool	insert_arr(t_resizable_arr	*arr, void *var);
-bool	free_arr(t_resizable_arr	*arr);
+int	init_arr(t_resizable_arr	*arr, size_t type_size);
+int	insert_arr(t_resizable_arr	*arr, void *var);
+int	free_arr(t_resizable_arr	*arr);
 
 void	init_resizable_arr(t_resizable_arr *arr)
 {
@@ -23,13 +23,13 @@ void	init_resizable_arr(t_resizable_arr *arr)
 	arr->free = free_arr;
 }
 
-bool	parser(t_map *map, const char *path);
-bool	scale_map(t_map *map);
-bool	push_map(t_map *map);
-bool	rotate_map(t_map *map);
-bool	colorize_map(t_map *map);
-bool	normalize_map(t_map *map);
-bool	denormalize_map(t_map *map);
+int	parser(t_map *map, const char *path);
+int	scale_map(t_map *map);
+int	push_map(t_map *map);
+int	rotate_map(t_map *map);
+int	colorize_map(t_map *map);
+int	normalize_map(t_map *map);
+int	denormalize_map(t_map *map);
 
 void	init_map(t_map	*map)
 {

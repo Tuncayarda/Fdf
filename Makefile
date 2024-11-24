@@ -1,16 +1,34 @@
-compile: compile_libs compile_fdf reset_libs
+NAME = fdf
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+LIBFT = libs/libft/libft.a
+GNL = libs/get_next_line/get_next_line.a
+PRINTF = libs/ft_printf/libftprintf.a
+MINILIBX = libs/minilibx-linux/libmlx_Linux.a
 
-std_run: compile
-	@./fdf test_maps/42.fdf
+SRCS = srcs/checkFile.c \
+		srcs/close.c \
+		srcs/confMap.c \
+		srcs/control.c \
+		srcs/drawMap.c \
+		srcs/drawUtils.c \
+		srcs/fdf.c \
+		srcs/initStructs.c \
+		srcs/mapUtils.c \
+		srcs/mapUtils1.c \
+		srcs/matrixUtils.c \
+		srcs/menu.c \
+		srcs/mlxUtils.c \
+		srcs/parser.c \
+		srcs/resizableArray.c \
+		srcs/setInvisibles.c \
+		srcs/terminate.c \
+		srcs/utils.c
 
-test_run: compile
-	@./fdf test_maps/mars_oscar.fdf
-run: compile
-	@read -p "Enter file dir: " dir; \
-	./fdf $$dir
+all: $(NAME)
 
-compile_fdf:
-	@cc -g srcs/*.c \
+$(NAME): $(LIBFT) $(GNL) $(PRINTF) $(MINILIBX)
+	$(CC) $(CFLAGS) $(SRCS) \
 	-I./inc \
 	\
 	-I./libs/libft \
@@ -25,27 +43,34 @@ compile_fdf:
 	-L./libs/minilibx-linux \
 	-lmlx -lX11 -lXext -lm -o fdf
 
-compile_libs:
+$(LIBFT):
 	@make -sC libs/libft
-	@make -sC libs/ft_printf
-	@make -sC libs/get_next_line 
-	@make -sC libs/minilibx-linux
-	@make clean -sC libs/libft
-	@make clean -sC libs/ft_printf
-	@make clean -sC libs/get_next_line
 
-valgrind: compile
-	@read -p "Enter file dir: " dir; \
-	valgrind ./fdf $$dir
+$(GNL):
+	@make -sC libs/get_next_line
+
+$(PRINTF):
+	@make -sC libs/ft_printf
+
+$(MINILIBX):
+	@git clone https://github.com/42Paris/minilibx-linux.git libs/minilibx-linux
+	@make -sC libs/minilibx-linux
+
+clean:
+	@make clean -sC libs/libft
+	@make clean -sC libs/get_next_line
+	@make clean -sC libs/ft_printf
+
+
+fclean: clean
+	@rm -rf $(LIBFT) $(GNL) $(PRINTF) $(NAME) libs/minilibx-linux
+
+re: fclean all
+
+.PHONY: all clean fclean re
 
 update_libs:
 	@git submodule update --init --recursive --remote
-
-reset_libs:
-	@cd libs/get_next_line && rm -f *.a
-	@cd libs/libft && rm -f *.a
-	@cd libs/ft_printf && rm -f *.a
-
 
 git_push: update_libs
 	@git add .

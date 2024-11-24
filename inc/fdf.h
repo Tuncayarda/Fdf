@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:51:08 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/24 00:46:47 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/24 16:01:23 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include "libft.h"
 # include "ft_printf.h"
 
-# include <stdio.h>
-
 # include <X11/keysym.h>
 # include <stdlib.h>
 # include <math.h>
@@ -31,8 +29,8 @@
 
 # define PI 3.14f
 # define RAD PI / 180
-# define WIDTH 2200
-# define HEIGHT 1300
+# define WIDTH 3500
+# define HEIGHT 2300
 # define SCALE 50.0f
 # define MIN_SCALE 1.0f
 # define MAX_SCALE 500.0f

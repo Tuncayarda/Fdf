@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 20:00:15 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/24 00:46:54 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/24 16:07:09 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,5 @@ int	handle_keys(int keycode, t_fdf *fdf)
 	free(rtn.pts);
 	mlx_put_image_to_window(fdf->mlx.ptr, fdf->mlx.win, fdf->mlx.img, 0, 0);
 	update_menu(fdf);
+	return (0);
 }

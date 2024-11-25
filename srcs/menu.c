@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 00:17:07 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/24 20:23:32 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/25 10:54:11 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	update_angles(t_fdf *fdf)
 {
 	char	*val;
+
 	val = ft_itoa((int)fdf->map.angle_x);
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
 		10, 40, ORANGE, "X ROTATION:");
@@ -40,7 +41,7 @@ static void	update_angles(t_fdf *fdf)
 static void	update_offsets(t_fdf *fdf)
 {
 	char	*val;
-	
+
 	val = ft_itoa((int)fdf->map.x_offset);
 	mlx_string_put(fdf->mlx.ptr, fdf->mlx.win,
 		10, 120, ORANGE, "X OFFSET:");

@@ -1,5 +1,6 @@
 NAME = fdf
 CC = cc
+MAKEFLAGS += --no-print-directory
 CFLAGS = -Wall -Wextra -Werror
 LIBFT = libs/libft/libft.a
 GNL = libs/get_next_line/get_next_line.a
@@ -25,23 +26,28 @@ SRCS = srcs/checkFile.c \
 		srcs/terminate.c \
 		srcs/utils.c
 
+OBJS = $(SRCS:.c=.o)
+
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(GNL) $(PRINTF) $(MINILIBX)
-	$(CC) $(CFLAGS) $(SRCS) \
-	-I./inc \
-	\
-	-I./libs/libft \
-	-I./libs/ft_printf \
-	-I./libs/get_next_line \
-	-I./libs/minilibx-linux \
-	\
+$(NAME): $(LIBFT) $(GNL) $(PRINTF) $(MINILIBX) $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) \
 	libs/libft/libft.a \
 	libs/ft_printf/libftprintf.a \
 	libs/get_next_line/get_next_line.a \
 	\
 	-L./libs/minilibx-linux \
 	-lmlx -lX11 -lXext -lm -o fdf
+	@make clean
+	@echo DONE!
+
+%.o: %.c
+	@$(CC) $(CFLAGS) -c \
+	-I./inc \
+	-I./libs/libft \
+	-I./libs/ft_printf \
+	-I./libs/get_next_line \
+	-I./libs/minilibx-linux $< -o $@
 
 $(LIBFT):
 	@make -sC libs/libft
@@ -54,12 +60,13 @@ $(PRINTF):
 
 $(MINILIBX):
 	@git clone https://github.com/42Paris/minilibx-linux.git libs/minilibx-linux  
-	@make -sC libs/minilibx-linux
+	@make -sC libs/minilibx-linux 1> /dev/null 2> /dev/null
 
 clean:
 	@make fclean -sC libs/libft
 	@make fclean -sC libs/get_next_line
 	@make fclean -sC libs/ft_printf
+	@rm -f $(OBJS)
 
 
 fclean: clean

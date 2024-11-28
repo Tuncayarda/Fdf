@@ -28,16 +28,30 @@ SRCS = srcs/checkFile.c \
 
 OBJS = $(SRCS:.c=.o)
 
-all: $(NAME)
+WIDTH = 1920
+HEIGHT = 1080
+
+all: default
+
+default: CFLAGS += -D WIDTH=$(WIDTH) -D HEIGHT=$(HEIGHT)
+default: $(NAME)
+
+2k: WIDTH = 2560
+2k: HEIGHT = 1440
+2k: CFLAGS += -D WIDTH=$(WIDTH) -D HEIGHT=$(HEIGHT)
+2k: $(NAME)
+
+4k: WIDTH = 3840
+4k: HEIGHT = 2160
+4k: CFLAGS += -D WIDTH=$(WIDTH) -D HEIGHT=$(HEIGHT)
+4k: $(NAME)
 
 $(NAME): $(LIBFT) $(GNL) $(PRINTF) $(MINILIBX) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) \
-	libs/libft/libft.a \
-	libs/ft_printf/libftprintf.a \
-	libs/get_next_line/get_next_line.a \
-	\
-	-L./libs/minilibx-linux \
-	-lmlx -lX11 -lXext -lm -o fdf
+	$(LIBFT) \
+	$(PRINTF) \
+	$(GNL) \
+	-L./libs/minilibx-linux -lmlx -lX11 -lXext -lm -o $(NAME)
 	@make clean
 	@echo DONE!
 
@@ -59,7 +73,7 @@ $(PRINTF):
 	@make -sC libs/ft_printf
 
 $(MINILIBX):
-	@git clone https://github.com/42Paris/minilibx-linux.git libs/minilibx-linux  
+	@git clone https://github.com/42Paris/minilibx-linux.git libs/minilibx-linux
 	@make -sC libs/minilibx-linux 1> /dev/null 2> /dev/null
 
 clean:
@@ -68,13 +82,10 @@ clean:
 	@make fclean -sC libs/ft_printf
 	@rm -f $(OBJS)
 
-
 fclean: clean
 	@rm -rf $(NAME) libs/minilibx-linux
 
 re: fclean all
-
-.PHONY: all clean fclean re
 
 update_libs:
 	@git submodule update --init --recursive --remote
@@ -82,5 +93,7 @@ update_libs:
 git_push: update_libs
 	@git add .
 	@read -p "Enter commit message: " message; \
-    git commit -m "$$message"
+	git commit -m "$$message"
 	@git push
+
+.PHONY: all clean fclean re update_libs git_push

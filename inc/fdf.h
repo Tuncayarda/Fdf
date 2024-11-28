@@ -29,8 +29,15 @@
 
 # define PI 3.14f
 # define RAD 0.01745329251
-# define WIDTH 3500
-# define HEIGHT 2300
+
+# ifndef WIDTH
+#  define WIDTH 3500
+# endif
+
+# ifndef HEIGHT
+#  define HEIGHT 2300
+# endif
+
 # define SCALE 50.0f
 # define MIN_SCALE 1.0f
 # define MAX_SCALE 500.0f

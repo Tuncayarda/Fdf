@@ -6,11 +6,13 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 20:00:15 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/24 16:07:09 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/29 00:04:18 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	handle_fill_keys(int keycode, t_fdf *fdf);
 
 static void	handle_prof_keys(int keycode, t_fdf *fdf)
 {
@@ -51,6 +53,10 @@ static void	handle_scale_keys(int keycode, t_fdf *fdf)
 		fdf->map.z_div *= 2.0f;
 	if (keycode == XK_v && fdf->map.z_div * 0.5f >= MIN_Z_DIV)
 		fdf->map.z_div *= 0.5f;
+	if (keycode == XK_f)
+		fdf->map.isfilled = true;
+	if (keycode == XK_h)
+		fdf->map.isfilled = false;
 }
 
 static void	handle_push_keys(int keycode, t_fdf *fdf)
@@ -95,7 +101,8 @@ int	handle_keys(int keycode, t_fdf *fdf)
 	handle_rot_keys(keycode, fdf);
 	handle_scale_keys(keycode, fdf);
 	handle_prof_keys(keycode, fdf);
-	fill_map(fdf, EIGENGRAU);
+	handle_fill_keys(keycode, fdf);
+	fill_win(fdf, EIGENGRAU);
 	rtn = conf_map(&fdf->map);
 	if (rtn.pts == NULL)
 		terminate("Allocation Fail!!!");

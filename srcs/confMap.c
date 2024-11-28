@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 23:45:33 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/24 00:46:43 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/28 23:49:40 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static t_map	copy_map(t_map *map)
 	rtn.proj = map->proj;
 	rtn.clr_prof = map->clr_prof;
 	rtn.colorize = map->colorize;
+	rtn.isfilled = map->isfilled;
 	return (rtn);
 }
 

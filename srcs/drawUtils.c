@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 21:00:09 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/24 19:32:09 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/28 23:33:46 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	draw_line(t_fdf *fdf, t_pt p1, t_pt p2)
 	}
 }
 
-void	fill_map(t_fdf	*fdf, int color)
+void	fill_win(t_fdf	*fdf, int color)
 {
 	size_t	i;
 

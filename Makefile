@@ -11,8 +11,10 @@ SRCS = srcs/checkFile.c \
 		srcs/close.c \
 		srcs/confMap.c \
 		srcs/control.c \
+		srcs/control1.c \
 		srcs/drawMap.c \
 		srcs/drawUtils.c \
+		srcs/drawUtils1.c \
 		srcs/fdf.c \
 		srcs/initStructs.c \
 		srcs/mapUtils.c \
@@ -24,14 +26,14 @@ SRCS = srcs/checkFile.c \
 		srcs/resizableArray.c \
 		srcs/setInvisibles.c \
 		srcs/terminate.c \
-		srcs/utils.c
+		srcs/utils.c 
 
 OBJS = $(SRCS:.c=.o)
 
 WIDTH = 1920
 HEIGHT = 1080
 
-all: default
+all: default 
 
 default: CFLAGS += -D WIDTH=$(WIDTH) -D HEIGHT=$(HEIGHT)
 default: $(NAME)

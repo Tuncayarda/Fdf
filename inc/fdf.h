@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:51:08 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/24 19:33:43 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/29 00:00:27 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ typedef struct s_map
 	float			angle_x;
 	float			angle_y;
 	float			angle_z;
+	bool			isfilled;
 	t_pt			*pts;
 	t_projection	proj;
 	t_color_profile	clr_prof;
@@ -154,7 +155,7 @@ void	draw_line(t_fdf *fdf, t_pt p1, t_pt p2);
 int		draw_map(t_fdf *fdf, t_map map);
 t_map	conf_map(t_map *map);
 int		handle_keys(int keycode, t_fdf *fdf);
-void	fill_map(t_fdf	*fdf, int color);
+void	fill_win(t_fdf	*fdf, int color);
 int		close_window(t_fdf *fdf);
 void	update_menu(t_fdf *fdf);
 void	set_angles(t_map *map);
@@ -163,5 +164,7 @@ void	draw_pix(t_fdf	*fdf, t_pt p);
 int		draw_sphere(t_fdf *fdf, t_map map);
 void	set_invisibles_pos(t_map *map);
 long	ft_hexatoi(char *hex);
+void	swap_pt(t_pt *a, t_pt *b);
+void	fill_triangle(t_fdf *fdf, t_pt p1, t_pt p2, t_pt p3);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 21:54:17 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/24 19:35:42 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/28 23:52:44 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@ int	draw_map(t_fdf *fdf, t_map map)
 				draw_line(fdf, map.pts[i], map.pts[i + 1]);
 			if (i < map.width * map.height - map.width)
 				draw_line(fdf, map.pts[i], map.pts[i + map.width]);
+			if ((i + 1) % map.width != 0
+				&& i < map.width * map.height - map.width
+				&& map.isfilled)
+			{
+				fill_triangle(fdf, map.pts[i], map.pts[i + 1],
+					map.pts[i + map.width]);
+				fill_triangle(fdf, map.pts[i + 1], map.pts[i + map.width],
+					map.pts[i + map.width + 1]);
+			}
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:28:00 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/24 19:34:05 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/28 23:42:05 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	init_map(t_map	*map)
 	map->z_div = SCALE;
 	map->proj = ISOMETRIC;
 	map->clr_prof = NONE;
+	map->isfilled = false;
 	map->parse = parser;
 	map->scale = scale_map;
 	map->push = push_map;

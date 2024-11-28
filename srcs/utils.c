@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 19:13:13 by tuaydin           #+#    #+#             */
-/*   Updated: 2024/11/24 19:35:14 by tuaydin          ###   ########.fr       */
+/*   Updated: 2024/11/28 23:52:57 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,13 @@ long	ft_hexatoi(char *hex)
 		result |= 0xFF;
 	}
 	return (result);
+}
+
+void	swap_pt(t_pt *a, t_pt *b)
+{
+	t_pt	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }

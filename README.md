@@ -1,7 +1,7 @@
 # FdF – 3D Wireframe Viewer
 
 FdF turns a plain-text height-map (`.fdf`) into an interactive 3-D wireframe.  
-It’s my implementation of the legendary **42 School** graphics project, built in C on **MiniLibX**.  ([f-corvaro/FDF: "A project transforming 3D wireframe ... - GitHub](https://github.com/f-corvaro/FDF?utm_source=chatgpt.com))
+It’s my implementation of the legendary **42 School** graphics project, built in C on **MiniLibX**.
 
 ## ✨ Features
 * Real-time rendering of large height maps  

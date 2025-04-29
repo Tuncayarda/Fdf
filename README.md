@@ -47,7 +47,6 @@ make 4k      # 3840×2160
 ```
 The **`fdf`** binary will appear in the project root.  ([Fdf/Makefile at main · Tuncayarda/Fdf · GitHub](https://github.com/Tuncayarda/Fdf/blob/main/Makefile))
 
----
 
 ## ▶️ Running
 ```bash
@@ -55,7 +54,6 @@ The **`fdf`** binary will appear in the project root.  ([Fdf/Makefile at main ·
 ```
 A rich set of sample maps lives in **`test_maps/`**.  ([Fdf/test_maps at main · Tuncayarda/Fdf · GitHub](https://github.com/Tuncayarda/Fdf/tree/main/test_maps))
 
----
 
 ## ⌨️ Keyboard Shortcuts
 
@@ -70,7 +68,6 @@ A rich set of sample maps lives in **`test_maps/`**.  ([Fdf/test_maps at main ·
 | `N / T` | Toggle color profile (None / Terrain) |
 | `Esc` | Quit |
 
----
 
 ## 📄 Height-map Format
 
@@ -83,20 +80,9 @@ Each row is a series of integers (optionally `,0xRRGGBB`) separated by spaces, e
 
 See the provided maps for concrete examples.
 
----
 
 ## 🗺️ Roadmap
 - Mouse-driven rotate & zoom  
 - Alternative color schemes  
 - PNG screen-capture
 
----
-
-## 📝 License
-
-MIT — see `LICENSE`.
-
-> **Image convention:** keep all screenshots/GIFs inside `docs/images/` so GitHub renders them automatically.
-```
-
-Happy documenting

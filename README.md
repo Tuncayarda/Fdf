@@ -21,12 +21,10 @@ It’s my implementation of the legendary **42 School** graphics project, built 
 
 ## 📸 Screenshots
 
-| Projection | Wireframe | Filled |
-|------------|-----------|--------|
-| **Isometric** | ![Iso wire](docs/images/isometric_wire.png) | ![Iso filled](docs/images/isometric_filled.png) |
-| **Globe** | ![Sphere wire](docs/images/sphere_wire.png) | ![Sphere filled](docs/images/sphere_filled.png) |
-
-*(Replace the images above with your own captures.)*
+| Projection | Wireframe |
+|------------|-----------|
+| **Isometric** | ![Iso wire](docs/images/isometric_wire.png) |
+| **Globe** | ![Sphere wire](docs/images/sphere_wire.png) |
 
 ---
 

@@ -69,7 +69,6 @@ A rich set of sample maps lives in **`test_maps/`**.  ([Fdf/test_maps at main ·
 | `F / H` | Toggle filled-polygon mode |
 | `N / T` | Toggle color profile (None / Terrain) |
 | `Esc` | Quit |
- ([Fdf/srcs/control.c at main · Tuncayarda/Fdf · GitHub](https://github.com/Tuncayarda/Fdf/blob/main/srcs/control.c))
 
 ---
 
